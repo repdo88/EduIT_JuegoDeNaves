@@ -9,12 +9,21 @@ public class Movement_back : MonoBehaviour
     [SerializeField] private float speed = 50f; // Speed of the movement
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         this.transform.Translate(Vector3.back * speed * Time.deltaTime, Space.World);
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.CompareTag("Finish"))
+        {
+            print("Desapareció");
+            Destroy(gameObject);
+        }
     }
 }
