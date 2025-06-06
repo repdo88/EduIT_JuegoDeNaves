@@ -7,6 +7,9 @@ public class ShipMovement : MonoBehaviour
 
     [SerializeField] private float speed = 20f; // Velocidad de movimiento de la nave
     private Vector3 move; // Vector de movimiento
+    [SerializeField] private float velocidadRotacion = 10f; // Velocidad de rotación de la nave
+    private float way; // Variable para controlar la rotación de la nave
+    private float wayx; // Variable para controlar la rotación en el eje X
 
     // Variables para limitar movimiento
     private float limIzquierda;
@@ -41,15 +44,15 @@ public class ShipMovement : MonoBehaviour
     void Update()
     {
         Movimiento();
+        Rotacion();
+
     }
-
-
-
 
 
     private void Movimiento()
     {
         move = new Vector3(0, 0, 0); // Resetear el vector de movimiento cada frame
+        
         if (Input.GetAxis("Horizontal") == -1f)
         {
             move.x -= 1; // Mover a la izquierda
@@ -67,12 +70,55 @@ public class ShipMovement : MonoBehaviour
             move.z += 1; // Mover adelante
         }
 
-        transform.Translate(move.normalized * speed * Time.deltaTime); // Cambiar posición
+        transform.Translate(move.normalized * speed * Time.deltaTime, Space.World); // Cambiar posición
 
         // Limitar movimiento dentro del plano
         Vector3 pos = transform.position; // Obtener la posición actual del auto
         pos.x = Mathf.Clamp(pos.x, limIzquierda, limDerecha); // Limitar movimiento en X
         pos.z = Mathf.Clamp(pos.z, limAtras, limAdelante); // Limitar movimiento en Z
         transform.position = pos; // Aplicar la posición limitada
+    }
+
+
+    private void Rotacion()
+    {
+        way = 0f; // Resetear la variable de rotación cada frame
+        //Rotación en z
+        if ((Input.GetKeyDown(KeyCode.A)) || (Input.GetKeyDown(KeyCode.LeftArrow))) // Rotar a la izquierda
+        {
+            way += 1;
+        }
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow)) // Dejar de rotar a la izquierda
+        {
+            way -= 1;
+        }
+        if ((Input.GetKeyDown(KeyCode.D)) || (Input.GetKeyDown(KeyCode.RightArrow))) // Rotar a la derecha
+        {
+            way -= 1;
+        }
+        if ((Input.GetKeyUp(KeyCode.D)) || (Input.GetKeyUp(KeyCode.RightArrow))) // Dejar de rotas
+        {
+            way += 1;
+        }
+        // Rotación en x
+        wayx = 0f; // Resetear la variable de rotación en x cada frame
+        if ((Input.GetKeyDown(KeyCode.W)) || (Input.GetKeyDown(KeyCode.UpArrow))) // Rotar a la izquierda
+        {
+            wayx += 1;
+        }
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow)) // Dejar de rotar a la izquierda
+        {
+            wayx -= 1;
+        }
+        if ((Input.GetKeyDown(KeyCode.S)) || (Input.GetKeyDown(KeyCode.DownArrow))) // Rotar a la derecha
+        {
+            wayx -= 1;
+        }
+        if ((Input.GetKeyUp(KeyCode.S)) || (Input.GetKeyUp(KeyCode.DownArrow))) // Dejar de rotas
+        {
+            wayx += 1;
+        }
+
+        transform.Rotate(new Vector3(wayx * velocidadRotacion, 0, way * velocidadRotacion)); // Cambiar rotación
     }
 }
