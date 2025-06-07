@@ -38,7 +38,7 @@ public class MovementEnemy1 : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         // Destruye el enemigo al recibir un disparo
-        if ((collider.gameObject.CompareTag("Bullet")))
+        if ((collider.gameObject.CompareTag("Bullet"))|| (collider.gameObject.CompareTag("Player")))
         {
             Destroy(gameObject);
         }
