@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void Ondestroy()
+    private void OnDestroy()
     {
         CancelInvoke(nameof(DestroyBullet)); // Cancela el timer si se destruye antes por otra cosa
     }
@@ -29,4 +29,14 @@ public class Bullet : MonoBehaviour
     {
         this.transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
     }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        // Destruye la bala al impactar al enemigo
+        if (collider.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
