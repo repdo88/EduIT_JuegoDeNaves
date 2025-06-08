@@ -6,22 +6,22 @@ public class Bullet : MonoBehaviour
 {
 
     [SerializeField] float speed = 50f;
-    [SerializeField] private float lifetime = 5f;
+    //[SerializeField] private float lifetime = 5f;
 
-    private void OnEnable()
-    {
-        Invoke(nameof(DestroyBullet), lifetime);
-    }
+    //private void OnEnable()
+    //{
+    //    Invoke(nameof(DestroyBullet), lifetime);
+    //}
 
-    private void DestroyBullet()
-    {
-        Destroy(gameObject);
-    }
+    //private void DestroyBullet()
+    //{
+    //    Destroy(gameObject);
+    //}
 
-    private void OnDestroy()
-    {
-        CancelInvoke(nameof(DestroyBullet)); // Cancela el timer si se destruye antes por otra cosa
-    }
+    //private void OnDestroy()
+    //{
+    //    CancelInvoke(nameof(DestroyBullet)); // Cancela el timer si se destruye antes por otra cosa
+    //}
 
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         // Destruye la bala al impactar al enemigo
-        if (collider.gameObject.CompareTag("Enemy"))
+        if ((collider.gameObject.CompareTag("Enemy")) || (collider.gameObject.CompareTag("FinalCamaraAlta")))
         {
             Destroy(gameObject);
         }

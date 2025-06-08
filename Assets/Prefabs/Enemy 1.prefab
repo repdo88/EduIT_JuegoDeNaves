@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2262972814782875388}
   - component: {fileID: 2761833457662782666}
   - component: {fileID: 4507099797164066409}
+  - component: {fileID: 7833529495083261275}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3561297284280921869}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.5, z: 51.1}
+  m_LocalPosition: {x: 0, y: 0.23, z: 51.1}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -149,3 +150,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!65 &7833529495083261275
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3561297284280921869}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 19.688616, y: 14.02, z: 22.0742}
+  m_Center: {x: 0, y: 1.6738714, z: 5.449951}
