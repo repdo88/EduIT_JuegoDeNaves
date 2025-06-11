@@ -49,6 +49,7 @@ public class ShipMovement : MonoBehaviour
     }
 
 
+
     private void Movimiento()
     {
         move = new Vector3(0, 0, 0); // Resetear el vector de movimiento cada frame

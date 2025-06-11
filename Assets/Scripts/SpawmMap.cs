@@ -6,7 +6,7 @@ public class SpawmMap : MonoBehaviour
 {
 
     public static SpawmMap instance; // Singleton instance
-    [SerializeField] private GameObject mapPrefab; // Prefab to spawn
+    public GameObject mapPrefab; // Prefab to spawn
 
     private void Awake()
     {
@@ -20,17 +20,6 @@ public class SpawmMap : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void NewMap()
     {
