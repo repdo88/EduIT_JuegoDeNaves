@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 2761833457662782666}
   - component: {fileID: 4507099797164066409}
   - component: {fileID: 7833529495083261275}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy 1
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,7 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
-  lifetime: 8
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1344
 --- !u!54 &4507099797164066409
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,7 +151,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &7833529495083261275
 BoxCollider:
   m_ObjectHideFlags: 0

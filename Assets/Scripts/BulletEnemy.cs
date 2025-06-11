@@ -6,6 +6,7 @@ public class BulletEnemy : MonoBehaviour
 {
 
     [SerializeField] float speed = 200f;
+    [SerializeField] private LayerMask layerMask; // Layer mask to check for collisions
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,8 @@ public class BulletEnemy : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         // Destruye la bala al impactar al enemigo
-        if ((collider.gameObject.CompareTag("Player")) || (collider.gameObject.CompareTag("FinalCamaraBaja")))
+        //if ((collider.gameObject.CompareTag("Player")) || (collider.gameObject.CompareTag("FinalCamaraBaja")))
+        if ((layerMask.value & (1 << collider.transform.gameObject.layer)) > 0)
         {
             Destroy(gameObject);
         }

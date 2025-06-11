@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
 
     [SerializeField] float speed = 50f;
+    [SerializeField] private LayerMask layerMask; // Layer mask to check for collisions
     //[SerializeField] private float lifetime = 5f;
 
     //private void OnEnable()
@@ -33,7 +34,8 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         // Destruye la bala al impactar al enemigo
-        if ((collider.gameObject.CompareTag("Enemy")) || (collider.gameObject.CompareTag("FinalCamaraAlta")))
+        //if ((collider.gameObject.CompareTag("Enemy")) || (collider.gameObject.CompareTag("FinalCamaraAlta")))
+        if ((layerMask.value & (1 << collider.transform.gameObject.layer)) > 0)
         {
             Destroy(gameObject);
         }

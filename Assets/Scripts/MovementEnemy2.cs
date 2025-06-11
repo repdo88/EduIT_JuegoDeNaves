@@ -10,7 +10,7 @@ public class MovementEnemy2 : MonoBehaviour
     [SerializeField] private Transform bulletSpawn2;
     [SerializeField] private float shootDelay = 1f;
     [SerializeField] private float shootTimer = 2f;
-    
+    [SerializeField] LayerMask layerMask; // LayerMask to filter collisions
 
 
     private void OnEnable()
@@ -42,8 +42,8 @@ public class MovementEnemy2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        // Destruye el enemigo al recibir un disparo
-        if ((collider.gameObject.CompareTag("Player")) || (collider.gameObject.CompareTag("FinalCamaraBaja")))
+        // Destruye la bala al impactar al enemigo
+        if ((layerMask.value & (1 << collider.transform.gameObject.layer)) > 0)
         {
             Destroy(gameObject);
         }

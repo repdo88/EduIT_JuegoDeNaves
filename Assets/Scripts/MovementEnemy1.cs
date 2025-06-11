@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovementEnemy1 : MonoBehaviour
 {
     [SerializeField] private float speed = 20f; // Speed of the movement
+    [SerializeField] private LayerMask layerMask; // Layer mask to check for collisions
     //[SerializeField] private float lifetime = 8f;
 
     //private void OnEnable()
@@ -38,7 +39,8 @@ public class MovementEnemy1 : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         // Destruye el enemigo al recibir un disparo
-        if ((collider.gameObject.CompareTag("Bullet")) || (collider.gameObject.CompareTag("Player")) || (collider.gameObject.CompareTag("FinalCamaraBaja")))
+        //if ((collider.gameObject.CompareTag("Bullet")) || (collider.gameObject.CompareTag("Player")) || (collider.gameObject.CompareTag("FinalCamaraBaja")))
+        if ((layerMask.value & (1 << collider.transform.gameObject.layer)) > 0)
         {
             Destroy(gameObject);
         }

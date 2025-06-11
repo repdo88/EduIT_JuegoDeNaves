@@ -3765,6 +3765,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!65 &1586314689233234804
 BoxCollider:
   m_ObjectHideFlags: 0

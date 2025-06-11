@@ -7,6 +7,7 @@ public class Movement_back : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] private float speed = 50f; // Speed of the movement
+    [SerializeField] LayerMask layerMask; // Layer mask to check for collisions
     void Start()
     {
 
@@ -20,9 +21,9 @@ public class Movement_back : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.CompareTag("Finish"))
+        //if (collider.gameObject.CompareTag("Finish"))
+        if ((layerMask.value & (1 << collider.transform.gameObject.layer)) > 0)
         {
-            print("Desapareció");
             Destroy(gameObject);
         }
     }

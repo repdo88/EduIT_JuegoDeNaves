@@ -15,13 +15,13 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - BulletPlayer
+  - BulletEnemy
+  - MapLimit
+  - Enemies
+  - Finish
   - 
   - 
   - 
