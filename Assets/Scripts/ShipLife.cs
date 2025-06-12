@@ -11,6 +11,7 @@ public class ShipLife : MonoBehaviour
     private void Start()
     {
         onHit.AddListener(LifeManager.instance.LoseLife); // Add the LoseLife method to the event listener
+        //onHit.AddListener(ShipMovement.instance.RestartShip); // Add the ResetPosition method to the event listener
     }
 
 
@@ -19,6 +20,7 @@ public class ShipLife : MonoBehaviour
         if ((layerMask.value & (1 << collider.transform.gameObject.layer)) > 0)
         {
             onHit.Invoke(); // Trigger the event when the ship is hit
+
 
         }
 

@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
+    public static ShipMovement instance; // Singleton instance
 
+    [SerializeField] private Vector3 startPosition = new Vector3(0f, 0.5f, -20f); // Posición inicial de la nave
+    [SerializeField] private Vector3 rotPosition = new Vector3(0f, 0f, 0f); // Rotación inicial de la nave
+    private bool canMove = true; // Variable para controlar si la nave puede moverse
     [SerializeField] private float speed = 20f; // Velocidad de movimiento de la nave
     private Vector3 move; // Vector de movimiento
     [SerializeField] private float velocidadRotacion = 10f; // Velocidad de rotación de la nave
@@ -40,6 +44,9 @@ public class ShipMovement : MonoBehaviour
         limAtras = centroZ - (largoPlano / 2f) + largoNave; // Límite atrás
     }
 
+
+
+
     // Update is called once per frame
     void Update()
     {
@@ -52,6 +59,8 @@ public class ShipMovement : MonoBehaviour
 
     private void Movimiento()
     {
+        if (!canMove) return; // Si no puede moverse, salir del método
+
         move = new Vector3(0, 0, 0); // Resetear el vector de movimiento cada frame
         
         if (Input.GetAxis("Horizontal") == -1f)
@@ -83,6 +92,8 @@ public class ShipMovement : MonoBehaviour
 
     private void Rotacion()
     {
+        if (!canMove) return; // Si no puede moverse, salir del método
+
         way = 0f; // Resetear la variable de rotación cada frame
         //Rotación en z
         if ((Input.GetKeyDown(KeyCode.A)) || (Input.GetKeyDown(KeyCode.LeftArrow))) // Rotar a la izquierda
@@ -122,4 +133,20 @@ public class ShipMovement : MonoBehaviour
 
         transform.Rotate(new Vector3(wayx * velocidadRotacion, 0, way * velocidadRotacion)); // Cambiar rotación
     }
+
+    public void RestartShip()
+    {
+        print("restart");
+        transform.position = startPosition; // Reiniciar posición de la nave
+        transform.rotation = Quaternion.Euler(rotPosition); // Reiniciar rotación de la nave
+        StartCoroutine(FreezeMovement(2f)); // Congelar movimiento por 1 segundo
+    }
+
+    private IEnumerator FreezeMovement(float duration)
+    {
+        canMove = false; // Desactivar movimiento
+        yield return new WaitForSeconds(duration); // Esperar el tiempo especificado
+        canMove = true; // Reactivar movimiento
+    }
+
 }
