@@ -11,6 +11,8 @@ public class ShipLife : MonoBehaviour
     private Renderer ren; // Reference to the Renderer component
     [SerializeField] private float renderTime = 1f; // Time to render the ship after being hit
     [SerializeField] private float meshTime = 2f; // Time to enable the MeshCollider after being hit
+    [SerializeField] private Material originalMaterial; // Original material of the ship
+    [SerializeField] private Material transparentMaterial; // Material to apply when the ship is hit
 
     private void Start()
     {
@@ -38,8 +40,10 @@ public class ShipLife : MonoBehaviour
         meshCollider.enabled = false; // Disable the MeshCollider
         yield return new WaitForSeconds(objectTime); // Wait for the specified time
         ren.enabled = true; // Enable the Renderer
+        ren.material = transparentMaterial; // Change the material to transparent
         yield return new WaitForSeconds(meshTime); // Wait for the specified time
         meshCollider.enabled = true; // Enable the MeshCollider again
+        ren.material = originalMaterial; // Change the material back to the original
     }
 
 }
