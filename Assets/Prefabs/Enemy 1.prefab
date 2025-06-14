@@ -121,10 +121,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08bebd076847ac14d8899b5cbd906e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onShootRecive:
+    m_PersistentCalls:
+      m_Calls: []
   speed: 100
   layerMask:
     serializedVersion: 2
-    m_Bits: 1344
+    m_Bits: 1088
+  bulletLayer: BulletPlayer
 --- !u!54 &4507099797164066409
 Rigidbody:
   m_ObjectHideFlags: 0
