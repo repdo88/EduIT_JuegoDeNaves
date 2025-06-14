@@ -20,6 +20,7 @@ public class ShipLife : MonoBehaviour
         ren = GetComponent<Renderer>(); // Get the Renderer component
         onHit.AddListener(LifeManager.instance.LoseLife); // Add the LoseLife method to the event listener
         //onHit.AddListener(ShipMovement.instance.RestartShip); // Add the ResetPosition method to the event listener
+        
     }
 
 
