@@ -139,7 +139,7 @@ public class ShipMovement : MonoBehaviour
         print("restart");
         transform.position = startPosition; // Reiniciar posición de la nave
         transform.rotation = Quaternion.Euler(rotPosition); // Reiniciar rotación de la nave
-        StartCoroutine(FreezeMovement(2f)); // Congelar movimiento por 1 segundo
+        StartCoroutine(FreezeMovement(2f)); // Congelar movimiento por 2 segundo
     }
 
     private IEnumerator FreezeMovement(float duration)

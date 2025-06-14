@@ -23,6 +23,7 @@ public class SpawmMap : MonoBehaviour
 
     public void NewMap()
     {
-        Instantiate(mapPrefab, transform.position, transform.rotation);
+        //Instantiate(mapPrefab, transform.position, transform.rotation);
+        Instantiate(mapPrefab, new Vector3(0f,0f,610f), transform.rotation);
     }
 }
