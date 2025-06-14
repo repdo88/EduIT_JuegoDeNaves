@@ -603,6 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a0bbb9c0a1f0e4a94fc4dfc22e2c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restTime: 1
   startPosition: {x: 0, y: 0.5, z: -20}
   rotPosition: {x: 0, y: 0, z: 0}
   speed: 20
@@ -685,6 +686,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  renderTime: 1
+  meshTime: 2
 --- !u!1 &908408686
 GameObject:
   m_ObjectHideFlags: 0

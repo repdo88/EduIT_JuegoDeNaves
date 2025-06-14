@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShipMovement : MonoBehaviour
 {
     public static ShipMovement instance; // Singleton instance
+    [SerializeField] private float restTime = 1f; // Tiempo para que puedas volver a moverte post revivir
 
     [SerializeField] private Vector3 startPosition = new Vector3(0f, 0.5f, -20f); // Posición inicial de la nave
     [SerializeField] private Vector3 rotPosition = new Vector3(0f, 0f, 0f); // Rotación inicial de la nave
@@ -139,7 +140,7 @@ public class ShipMovement : MonoBehaviour
         print("restart");
         transform.position = startPosition; // Reiniciar posición de la nave
         transform.rotation = Quaternion.Euler(rotPosition); // Reiniciar rotación de la nave
-        StartCoroutine(FreezeMovement(2f)); // Congelar movimiento por 2 segundo
+        StartCoroutine(FreezeMovement(restTime)); // Congelar movimiento por 2 segundo
     }
 
     private IEnumerator FreezeMovement(float duration)

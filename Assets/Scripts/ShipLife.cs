@@ -9,6 +9,8 @@ public class ShipLife : MonoBehaviour
     public UnityEvent onHit; // Event to trigger when the ship is hit
     private MeshCollider meshCollider; // Reference to the MeshCollider component
     private Renderer ren; // Reference to the Renderer component
+    [SerializeField] private float renderTime = 1f; // Time to render the ship after being hit
+    [SerializeField] private float meshTime = 2f; // Time to enable the MeshCollider after being hit
 
     private void Start()
     {
@@ -24,7 +26,7 @@ public class ShipLife : MonoBehaviour
         if ((layerMask.value & (1 << collider.transform.gameObject.layer)) > 0)
         {
             onHit.Invoke(); // Trigger the event when the ship is hit
-            StartCoroutine(Desactivate(1f, 1f)); // Start the coroutine to deactivate the ship
+            StartCoroutine(Desactivate(renderTime, meshTime)); // Start the coroutine to deactivate the ship
 
         }
 
