@@ -962,7 +962,7 @@ MonoBehaviour:
   enemy: {fileID: 3561297284280921869, guid: 6affcfb5870873840a00a2f1b824de23, type: 3}
   enemy2: {fileID: 4974306542482230792, guid: b5347f4e33553a14397d1c400d19231d, type: 3}
   spawnTime: 0.5
-  spawnTime2: 1
+  spawnTime2: 1.5
   spawmDelay: 5
 --- !u!4 &1223986026
 Transform:
