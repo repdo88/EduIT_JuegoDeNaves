@@ -184,12 +184,17 @@ MonoBehaviour:
   bulletSpawn1: {fileID: 3872696266267593202}
   bulletSpawn2: {fileID: 697786805259658151}
   shootDelay: 0
-  shootTimer: 1
+  shootTimer: 2
   layerMask:
     serializedVersion: 2
     m_Bits: 1344
-  speedZ: 100
+  speedZ: 50
   speedX: 20
+  onDead:
+    m_PersistentCalls:
+      m_Calls: []
+  bulletLayer: BulletPlayer
+  lives: 2
 --- !u!1 &7251320645207214986
 GameObject:
   m_ObjectHideFlags: 0

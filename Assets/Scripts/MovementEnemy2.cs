@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class MovementEnemy2 : MonoBehaviour
 {
@@ -19,7 +21,11 @@ public class MovementEnemy2 : MonoBehaviour
     private float minX = -38f; // Minimum X position
     private float maxX = 41f; // Maximum X position
     private float xDirection; // Direction of movement in X axis
-
+    [Header("Dead Settings")]
+    public UnityEvent onDead; // Event to trigger when the enemy is dead
+    private bool isDead = false; // Flag to check if the enemy is dead
+    [SerializeField] private string bulletLayer = "BulletPlayer"; // Name of the layer for enemies
+    [SerializeField] private int lives = 2; // Number of lives for the enemy
 
 
     private void OnEnable()
@@ -40,6 +46,7 @@ public class MovementEnemy2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        onDead.AddListener(ScoreManager.instance.AddScore); // Add the AddScore method to the event listener
         xDirection = Random.value < 0.5f ? -1f : 1f; // Randomly set the direction of movement in X axis
     }
 
@@ -68,8 +75,20 @@ public class MovementEnemy2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        // Destruye la bala al impactar al enemigo
-        if ((layerMask.value & (1 << collider.transform.gameObject.layer)) > 0)
+        if (isDead) return; // If the enemy is already dead, do nothing
+        if (collider.gameObject.layer == LayerMask.NameToLayer(bulletLayer))
+        {
+            lives--; // Decrease the lives of the enemy
+            if (lives == 0)
+            {
+                isDead = true;
+                onDead.Invoke(); // Invoca el evento al recibir un disparo
+                Destroy(gameObject);
+            }
+        }
+
+        // Destruye el enemigo al chocar o salir del mapa
+        else if ((layerMask.value & (1 << collider.transform.gameObject.layer)) > 0)
         {
             Destroy(gameObject);
         }

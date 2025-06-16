@@ -52,7 +52,7 @@ public class MovementEnemy1 : MonoBehaviour
             
         }
 
-        // Destruye el enemigo al recibir un disparo
+        // Destruye el enemigo al chocar o salir del mapa
         //if ((collider.gameObject.CompareTag("Bullet")) || (collider.gameObject.CompareTag("Player")) || (collider.gameObject.CompareTag("FinalCamaraBaja")))
         else if ((layerMask.value & (1 << collider.transform.gameObject.layer)) > 0)
         {
