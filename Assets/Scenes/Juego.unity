@@ -654,7 +654,7 @@ MonoBehaviour:
   restTime: 1
   startPosition: {x: 0, y: 0.5, z: -20}
   rotPosition: {x: 0, y: 0, z: 0}
-  speed: 20
+  speed: 25
   velocidadRotacion: 10
   plano: {fileID: 1499248692}
 --- !u!4 &860712341 stripped

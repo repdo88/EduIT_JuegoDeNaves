@@ -7,6 +7,7 @@ public class LifeManager : MonoBehaviour
 {
     public static LifeManager instance; // Singleton instance
     [SerializeField] private int lives = 3; // Number of lives
+    public UnityEvent onDead; // Event to trigger when the player is dead
 
     private void Awake()
     {
@@ -20,16 +21,18 @@ public class LifeManager : MonoBehaviour
         }
     }
 
+
+
     public void LoseLife()
     {
-        if (lives > 0)
+        if (lives > 1)
         {
             lives--; // Decrease the number of lives
             print("Lose live");
         }
         else
         {
-            Debug.Log("Game Over!"); // Handle game over logic here
+            onDead.Invoke(); // Trigger the event when the player is dead
         }
     }
 
