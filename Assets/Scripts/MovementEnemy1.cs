@@ -31,7 +31,8 @@ public class MovementEnemy1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        onShootRecive.AddListener(ScoreManager.instance.AddScore); // Add the AddScore method to the event listener
+        // Fix: Wrap the method call in a lambda to pass it as a UnityAction
+        onShootRecive.AddListener(() => ScoreManager.instance.AddScore(1)); // Add the AddScore method to the event listener
     }
 
     // Update is called once per frame
@@ -49,7 +50,7 @@ public class MovementEnemy1 : MonoBehaviour
             //print("Enemy hit by bullet!"); // Debug message for enemy hit
             onShootRecive.Invoke(); // Invoca el evento al recibir un disparo
             Destroy(gameObject);
-            
+
         }
 
         // Destruye el enemigo al chocar o salir del mapa

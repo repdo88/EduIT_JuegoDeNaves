@@ -42,9 +42,9 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("Game Over! Final Score: " + score + ", Time Played: " + timePlayed + " seconds"); // Log final score and time played
     }
 
-    public void AddScore()
+    public void AddScore(int points)
     {
-        score += 1; // Increase the score by the specified points
+        score += points; // Increase the score by the specified points
         Debug.Log("Score: " + score); // Log the current score
     }
 }

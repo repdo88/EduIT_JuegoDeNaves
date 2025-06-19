@@ -46,7 +46,7 @@ public class MovementEnemy2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        onDead.AddListener(ScoreManager.instance.AddScore); // Add the AddScore method to the event listener
+        onDead.AddListener(() => ScoreManager.instance.AddScore(3)); // Add the AddScore method to the event listener
         xDirection = Random.value < 0.5f ? -1f : 1f; // Randomly set the direction of movement in X axis
     }
 
