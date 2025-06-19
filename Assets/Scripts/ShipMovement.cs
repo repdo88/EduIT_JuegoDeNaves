@@ -6,10 +6,17 @@ public class ShipMovement : MonoBehaviour
 {
     public static ShipMovement instance; // Singleton instance
     [SerializeField] private float restTime = 1f; // Tiempo para que puedas volver a moverte post revivir
-
+    [Space]
     [SerializeField] private Vector3 startPosition = new Vector3(0f, 0.5f, -20f); // Posición inicial de la nave
     [SerializeField] private Vector3 rotPosition = new Vector3(0f, 0f, 0f); // Rotación inicial de la nave
+    [Space]
+    [SerializeField] private float limIzquierda = -38.39f;
+    [SerializeField] private float limDerecha = 38.39f;
+    [SerializeField] private float limAdelante = 36.10f;
+    [SerializeField] private float limAtras = -26.45f;
+    
     private bool canMove = true; // Variable para controlar si la nave puede moverse
+    [Space]
     [SerializeField] private float speed = 20f; // Velocidad de movimiento de la nave
     private Vector3 move; // Vector de movimiento
     [SerializeField] private float velocidadRotacion = 10f; // Velocidad de rotación de la nave
@@ -17,32 +24,29 @@ public class ShipMovement : MonoBehaviour
     private float wayx; // Variable para controlar la rotación en el eje X
 
     // Variables para limitar movimiento
-    private float limIzquierda;
-    private float limDerecha;
-    private float limAdelante;
-    private float limAtras;
-    private float anchoPlano;
-    private float largoPlano;
+
+    //private float anchoPlano;
+    //private float largoPlano;
     public Transform plano; // Referencia al plano donde se mueve
 
     // Start is called before the first frame update
     void Start()
     {
-        Renderer planoRenderer = plano.GetComponent<Renderer>();
-        float anchoPlano = planoRenderer.bounds.size.x; // Ancho del plano
-        float largoPlano = planoRenderer.bounds.size.z; // Largo del plano
+        //Renderer planoRenderer = plano.GetComponent<Renderer>();
+        //float anchoPlano = planoRenderer.bounds.size.x; // Ancho del plano
+        //float largoPlano = planoRenderer.bounds.size.z; // Largo del plano
 
-        Renderer autoRenderer = GetComponent<Renderer>();
-        float largoNave = autoRenderer.bounds.size.z / 2f; // Largo del auto (la mitad para centrarlo)
-        float anchoNave = autoRenderer.bounds.size.x / 2f; // Ancho del auto (la mitad para centrarlo)
+        //Renderer autoRenderer = GetComponent<Renderer>();
+        //float largoNave = autoRenderer.bounds.size.z / 2f; // Largo del auto (la mitad para centrarlo)
+        //float anchoNave = autoRenderer.bounds.size.x / 2f; // Ancho del auto (la mitad para centrarlo)
 
-        float centroX = plano.position.x; // Centro del plano en X
-        float centroZ = plano.position.z; // Centro del plano en Z
+        //float centroX = plano.position.x; // Centro del plano en X
+        //float centroZ = plano.position.z; // Centro del plano en Z
 
-        limIzquierda = centroX - (anchoPlano / 2f) + anchoNave; // Límite izquierdo
-        limDerecha = centroX + (anchoPlano / 2f) - anchoNave; // Límite derecho
-        limAdelante = centroZ + (largoPlano / 2f) - largoNave; // Límite adelante
-        limAtras = centroZ - (largoPlano / 2f) + largoNave; // Límite atrás
+        //limIzquierda = centroX - (anchoPlano / 2f) + anchoNave; // Límite izquierdo
+        //limDerecha = centroX + (anchoPlano / 2f) - anchoNave; // Límite derecho
+        //limAdelante = centroZ + (largoPlano / 2f) - largoNave; // Límite adelante
+        //limAtras = centroZ - (largoPlano / 2f) + largoNave; // Límite atrás
     }
 
 
@@ -133,6 +137,12 @@ public class ShipMovement : MonoBehaviour
         }
 
         transform.Rotate(new Vector3(wayx * velocidadRotacion, 0, way * velocidadRotacion)); // Cambiar rotación
+        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)
+            && !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow)) // Si no se está rotando, detener la rotación
+        {
+            transform.rotation = Quaternion.Euler(rotPosition); // Mantener la rotación en Y
+        }
+
     }
 
     public void RestartShip()

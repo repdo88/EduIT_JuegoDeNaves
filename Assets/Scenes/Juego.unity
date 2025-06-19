@@ -598,6 +598,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1586314689233234804, guid: f0b7efdb18cd6b94f80d2202c18da448, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4298483749135209250, guid: f0b7efdb18cd6b94f80d2202c18da448, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -641,6 +645,10 @@ PrefabInstance:
     - target: {fileID: 8941539002839607894, guid: f0b7efdb18cd6b94f80d2202c18da448, type: 3}
       propertyPath: m_Name
       value: Space (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941539002839607894, guid: f0b7efdb18cd6b94f80d2202c18da448, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -698,6 +706,10 @@ MonoBehaviour:
   restTime: 1
   startPosition: {x: 0, y: 0.5, z: -20}
   rotPosition: {x: 0, y: 0, z: 0}
+  limIzquierda: -38.39
+  limDerecha: 38.39
+  limAdelante: 36.1
+  limAtras: -26.45
   speed: 25
   velocidadRotacion: 10
   plano: {fileID: 1499248692}
@@ -747,7 +759,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 116
   m_CollisionDetection: 1
 --- !u!114 &860712350
 MonoBehaviour:
@@ -1110,7 +1122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1499248689
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1642,6 +1654,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1586314689233234804, guid: f0b7efdb18cd6b94f80d2202c18da448, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4298483749135209250, guid: f0b7efdb18cd6b94f80d2202c18da448, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1689,6 +1705,10 @@ PrefabInstance:
     - target: {fileID: 8941539002839607894, guid: f0b7efdb18cd6b94f80d2202c18da448, type: 3}
       propertyPath: m_Name
       value: Space
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941539002839607894, guid: f0b7efdb18cd6b94f80d2202c18da448, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
