@@ -10,6 +10,7 @@ public class MovementEnemy1 : MonoBehaviour
     [SerializeField] private LayerMask layerMask; // Layer mask to check for collisions
     [SerializeField] private string bulletLayer = "BulletPlayer"; // Name of the layer for enemies
     private bool isDead = false; // Flag to check if the enemy is dead
+    [SerializeField] private int killPoints = 1; // Points to add to the score when the enemy is hit
     //[SerializeField] private float lifetime = 8f;
 
     //private void OnEnable()
@@ -32,7 +33,7 @@ public class MovementEnemy1 : MonoBehaviour
     void Start()
     {
         // Fix: Wrap the method call in a lambda to pass it as a UnityAction
-        onShootRecive.AddListener(() => ScoreManager.instance.AddScore(1)); // Add the AddScore method to the event listener
+        onShootRecive.AddListener(() => ScoreManager.instance.AddScore(killPoints)); // Add the AddScore method to the event listener
     }
 
     // Update is called once per frame

@@ -26,6 +26,7 @@ public class MovementEnemy2 : MonoBehaviour
     private bool isDead = false; // Flag to check if the enemy is dead
     [SerializeField] private string bulletLayer = "BulletPlayer"; // Name of the layer for enemies
     [SerializeField] private int lives = 2; // Number of lives for the enemy
+    [SerializeField] private int killPoints = 3; // Points to add to the score when the enemy is hit
 
 
     private void OnEnable()
@@ -46,7 +47,7 @@ public class MovementEnemy2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        onDead.AddListener(() => ScoreManager.instance.AddScore(3)); // Add the AddScore method to the event listener
+        onDead.AddListener(() => ScoreManager.instance.AddScore(killPoints)); // Add the AddScore method to the event listener
         xDirection = Random.value < 0.5f ? -1f : 1f; // Randomly set the direction of movement in X axis
     }
 
