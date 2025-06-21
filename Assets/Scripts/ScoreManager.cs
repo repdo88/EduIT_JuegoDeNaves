@@ -84,7 +84,15 @@ public class ScoreManager : MonoBehaviour
         
         list.Add(new ScoreEntry(name, points, time));
 
-        
+        list = list.OrderByDescending(e => e.points)
+           .ThenBy(e => e.duration)
+           .ToList();
+
+        int rank = list.FindIndex(e => e.playerName == name && e.points == points && e.duration == time) + 1;
+
+        bool isNewHighScore = rank <= 5;
+
+
         list = list.OrderByDescending(e => e.points)
                    .ThenBy(e => e.duration)       
                    .Take(5)
@@ -97,6 +105,9 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt($"HighPoints{i}", list[i].points);
             PlayerPrefs.SetFloat($"HighTime{i}", list[i].duration);
         }
+
+        PlayerPrefs.SetInt("LastScoreRank", rank); // Save the rank of the current score
+        PlayerPrefs.SetInt("LastScoreInTop", isNewHighScore ? 1 : 0); // Save if the score is in the top 5
 
         PlayerPrefs.Save();
     }

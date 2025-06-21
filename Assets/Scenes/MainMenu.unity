@@ -1194,15 +1194,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3954280523343839612, guid: 62990642302a7cc498dad6b168295e7d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.581274
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 3954280523343839612, guid: 62990642302a7cc498dad6b168295e7d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.581274
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 3954280523343839612, guid: 62990642302a7cc498dad6b168295e7d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.581274
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 3954280523343839612, guid: 62990642302a7cc498dad6b168295e7d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1244,9 +1244,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3954280523343839612, guid: 62990642302a7cc498dad6b168295e7d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4443853831605296070, guid: 62990642302a7cc498dad6b168295e7d, type: 3}
       propertyPath: m_Name
-      value: 7.1
+      value: Ship
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

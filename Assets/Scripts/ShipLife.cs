@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class ShipLife : MonoBehaviour
 {
+    public static ShipLife instance; // Singleton instance of ShipLife
+
     [SerializeField] LayerMask layerMask; // Layer mask to check for collisions
     public UnityEvent onHit; // Event to trigger when the ship is hit
     private MeshCollider meshCollider; // Reference to the MeshCollider component
@@ -45,6 +47,11 @@ public class ShipLife : MonoBehaviour
         yield return new WaitForSeconds(meshTime); // Wait for the specified time
         meshCollider.enabled = true; // Enable the MeshCollider again
         ren.material = originalMaterial; // Change the material back to the original
+    }
+
+    public void killShip()
+    {
+        this.gameObject.SetActive(false); // Deactivate the ship GameObject
     }
 
 }

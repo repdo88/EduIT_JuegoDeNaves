@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemySpawmer : MonoBehaviour
 {
 
+    public static EnemySpawmer instance; // Singleton instance
+
     [SerializeField] private Transform spawm1;
     [SerializeField] private Transform spawm2;
     [SerializeField] private GameObject enemy;
@@ -12,6 +14,20 @@ public class EnemySpawmer : MonoBehaviour
     [SerializeField] private float spawnTime = 2f;
     [SerializeField] private float spawnTime2 = 4f;
     [SerializeField] private float spawmDelay = 2f;
+
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); // Ensure only one instance exists
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,9 +63,9 @@ public class EnemySpawmer : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StopSpawning()
     {
-        
+        CancelInvoke("SpawnEnemy");
+        CancelInvoke("SpawnEnemy2");
     }
 }
