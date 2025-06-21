@@ -8,6 +8,8 @@ public class LifeManager : MonoBehaviour
     public static LifeManager instance; // Singleton instance
     [SerializeField] private int lives = 3; // Number of lives
     public UnityEvent onDead; // Event to trigger when the player is dead
+    [SerializeField] private GameObject life1; // Reference to the first life GameObject
+    [SerializeField] private GameObject life2; // Reference to the second life GameObject
 
     private void Awake()
     {
@@ -25,8 +27,15 @@ public class LifeManager : MonoBehaviour
 
     public void LoseLife()
     {
-        if (lives > 1)
+        if (lives > 2)
         {
+            life1.SetActive(false);
+            lives--; // Decrease the number of lives
+            print("Lose live");
+        }
+        else if (lives > 1)
+        {
+            life2.SetActive(false);
             lives--; // Decrease the number of lives
             print("Lose live");
         }

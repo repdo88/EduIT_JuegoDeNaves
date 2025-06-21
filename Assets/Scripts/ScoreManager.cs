@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 using static ReadScores;
 
 public class ScoreManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     private int score = 0; // Player's score
     private int timePlayed = 0; // Time played in seconds
     private bool isAlive = true; // Flag to check if the game is active
+    [SerializeField] private TextMeshProUGUI timeText; // Reference to the UI text object for displaying time played
+    [SerializeField] private TextMeshProUGUI scoreText; // Reference to the UI text object for displaying score
 
     private void Awake()
     {
@@ -26,6 +29,18 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(CountingTime()); // Start the coroutine to count time played
+    }
+
+    private void Update()
+    {
+        if (isAlive)
+        {
+            //timeText.text = "Time Played:\n" + $"{timePlayed} seconds"; // Update the time played text
+            //scoreText.text = "Score:\n" + $"{score} points"; // Update the score text
+            timeText.text = $"{timePlayed} seconds"; // Update the time played text
+            scoreText.text = $"{score} points"; // Update the score text
+
+        }
     }
 
     private IEnumerator CountingTime()
@@ -112,5 +127,15 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+
+    public int GetScore()
+    {
+        return score; // Return the current score
+    }
+
+    public int GetTimePlayed()
+    {
+        return timePlayed; // Return the time played in seconds
+    }
 
 }

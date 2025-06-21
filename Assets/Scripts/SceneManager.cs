@@ -7,6 +7,7 @@ public class SceneManager : MonoBehaviour
 {
     public static SceneManager Instance;
     [SerializeField] private GameObject gameOverCanvas; // Reference to the Game Over canvas
+    [SerializeField] private GameObject gameUi; // Reference to the Game Over canvas
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class SceneManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.01f); // Wait for 1 second before showing Game Over
         gameOverCanvas.SetActive(true); // Activate the Game Over canvas
-        
+        gameUi.SetActive(false);
+
     }
 }
