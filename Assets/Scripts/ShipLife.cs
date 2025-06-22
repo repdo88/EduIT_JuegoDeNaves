@@ -15,6 +15,7 @@ public class ShipLife : MonoBehaviour
     [SerializeField] private float meshTime = 2f; // Time to enable the MeshCollider after being hit
     [SerializeField] private Material originalMaterial; // Original material of the ship
     [SerializeField] private Material transparentMaterial; // Material to apply when the ship is hit
+    [SerializeField] private GameObject explosionPrefab; // Prefab for explosion effect
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class ShipLife : MonoBehaviour
     {
         if ((layerMask.value & (1 << collider.transform.gameObject.layer)) > 0)
         {
+            explode(); // Call the explode method to create explosion effect
             onHit.Invoke(); // Trigger the event when the ship is hit
             StartCoroutine(Desactivate(renderTime, meshTime)); // Start the coroutine to deactivate the ship
 
@@ -52,6 +54,16 @@ public class ShipLife : MonoBehaviour
     public void killShip()
     {
         this.gameObject.SetActive(false); // Deactivate the ship GameObject
+    }
+
+    private void explode()
+    {
+        if (explosionPrefab != null)
+        {
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+            ParticleSystem ps = explosion.GetComponent<ParticleSystem>();
+            Destroy(explosion, ps.main.duration + ps.main.startLifetime.constantMax); // Destroy the explosion effect after 2 seconds
+        }
     }
 
 }

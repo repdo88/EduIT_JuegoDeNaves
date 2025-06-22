@@ -1177,6 +1177,7 @@ MonoBehaviour:
   meshTime: 2
   originalMaterial: {fileID: 2100000, guid: d79a83adef48e0c41bf93a4d0491ac1d, type: 2}
   transparentMaterial: {fileID: 2100000, guid: 6fd00165a4191bb489369c076080b71c, type: 2}
+  explosionPrefab: {fileID: 7907813101855666106, guid: 773e5630d0f28ff4c9527c8ea74f1f45, type: 3}
 --- !u!1 &908408686
 GameObject:
   m_ObjectHideFlags: 0
