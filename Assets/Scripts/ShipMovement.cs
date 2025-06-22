@@ -23,33 +23,8 @@ public class ShipMovement : MonoBehaviour
     private float way; // Variable para controlar la rotación de la nave
     private float wayx; // Variable para controlar la rotación en el eje X
 
-    // Variables para limitar movimiento
 
-    //private float anchoPlano;
-    //private float largoPlano;
     public Transform plano; // Referencia al plano donde se mueve
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Renderer planoRenderer = plano.GetComponent<Renderer>();
-        //float anchoPlano = planoRenderer.bounds.size.x; // Ancho del plano
-        //float largoPlano = planoRenderer.bounds.size.z; // Largo del plano
-
-        //Renderer autoRenderer = GetComponent<Renderer>();
-        //float largoNave = autoRenderer.bounds.size.z / 2f; // Largo del auto (la mitad para centrarlo)
-        //float anchoNave = autoRenderer.bounds.size.x / 2f; // Ancho del auto (la mitad para centrarlo)
-
-        //float centroX = plano.position.x; // Centro del plano en X
-        //float centroZ = plano.position.z; // Centro del plano en Z
-
-        //limIzquierda = centroX - (anchoPlano / 2f) + anchoNave; // Límite izquierdo
-        //limDerecha = centroX + (anchoPlano / 2f) - anchoNave; // Límite derecho
-        //limAdelante = centroZ + (largoPlano / 2f) - largoNave; // Límite adelante
-        //limAtras = centroZ - (largoPlano / 2f) + largoNave; // Límite atrás
-    }
-
-
 
 
     // Update is called once per frame
