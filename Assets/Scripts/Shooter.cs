@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Shooter : MonoBehaviour
 {
+    public UnityEvent onShoot; // Event to trigger when the player shoots
     public static Shooter instance; // Singleton instance
     private bool canShoot = true; // Variable to control if the player can shoot
     private bool coolDown = false; // Variable to control cooldown state
@@ -16,7 +18,7 @@ public class Shooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        onShoot.AddListener(() => AudioManager.instance.PlaySound("PlayerShoot"));
     }
 
     // Update is called once per frame
@@ -29,6 +31,7 @@ public class Shooter : MonoBehaviour
             GameObject bullet1 = Instantiate(bullet, bulletSpawn1.position, bulletSpawn1.rotation);
             GameObject bullet2 = Instantiate(bullet, bulletSpawn2.position, bulletSpawn2.rotation);
             StartCoroutine(startCoolDown()); // Start the cooldown coroutine
+            onShoot.Invoke(); // Trigger the shoot event
         }
     }
 

@@ -13,6 +13,7 @@ public class MovementEnemy2 : MonoBehaviour
     [SerializeField] private Transform bulletSpawn2;
     [SerializeField] private float shootDelay = 1f;
     [SerializeField] private float shootTimer = 2f;
+    public UnityEvent onShoot; // Event to trigger when the enemy shoots
     [Header("Collision Settings")]
     [SerializeField] LayerMask layerMask; // LayerMask to filter collisions
     [Header("Movement Settings")]
@@ -44,12 +45,14 @@ public class MovementEnemy2 : MonoBehaviour
     {
         GameObject bullet1 = Instantiate(bullet, bulletSpawn1.position, bulletSpawn1.rotation);
         GameObject bullet2 = Instantiate(bullet, bulletSpawn2.position, bulletSpawn2.rotation);
+        onShoot.Invoke(); // Trigger the shoot event
     }
 
     // Start is called before the first frame update
     void Start()
     {
         onDead.AddListener(() => ScoreManager.instance.AddScore(killPoints)); // Add the AddScore method to the event listener
+        onShoot.AddListener(() => AudioManager.instance.PlaySound("EnemyShoot")); // Add the PlaySound method to the event listener
         xDirection = Random.value < 0.5f ? -1f : 1f; // Randomly set the direction of movement in X axis
     }
 
