@@ -25,8 +25,10 @@ public class MovementEnemy2 : MonoBehaviour
     public UnityEvent onDead; // Event to trigger when the enemy is dead
     private bool isDead = false; // Flag to check if the enemy is dead
     [SerializeField] private string bulletLayer = "BulletPlayer"; // Name of the layer for enemies
+    [SerializeField] private string playerLayer = "Player"; // Name of the layer for enemies
     [SerializeField] private int lives = 2; // Number of lives for the enemy
     [SerializeField] private int killPoints = 3; // Points to add to the score when the enemy is hit
+    [SerializeField] private GameObject explosionPrefab; // Prefab for explosion effect
 
 
     private void OnEnable()
@@ -84,14 +86,32 @@ public class MovementEnemy2 : MonoBehaviour
             {
                 isDead = true;
                 onDead.Invoke(); // Invoca el evento al recibir un disparo
+                explode(); // Call the explode method to create explosion effect
                 Destroy(gameObject);
             }
+        }
+        else if (collider.gameObject.layer == LayerMask.NameToLayer(playerLayer))
+        {
+            Destroy(gameObject);
+            explode(); // Call the explode method to create explosion effect
+
         }
 
         // Destruye el enemigo al chocar o salir del mapa
         else if ((layerMask.value & (1 << collider.transform.gameObject.layer)) > 0)
         {
             Destroy(gameObject);
+
+        }
+    }
+
+    private void explode()
+    {
+        if (explosionPrefab != null)
+        {
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+            ParticleSystem ps = explosion.GetComponent<ParticleSystem>();
+            Destroy(explosion, ps.main.duration + ps.main.startLifetime.constantMax); // Destroy the explosion effect after 2 seconds
         }
     }
 }

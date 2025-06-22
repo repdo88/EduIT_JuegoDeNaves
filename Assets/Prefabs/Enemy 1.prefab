@@ -127,8 +127,11 @@ MonoBehaviour:
   speed: 100
   layerMask:
     serializedVersion: 2
-    m_Bits: 1088
+    m_Bits: 1024
   bulletLayer: BulletPlayer
+  playerLayer: Player
+  killPoints: 1
+  explosionPrefab: {fileID: 2424178352328139398, guid: a3533b2940b4a694bbae63206956919b, type: 3}
 --- !u!54 &4507099797164066409
 Rigidbody:
   m_ObjectHideFlags: 0
