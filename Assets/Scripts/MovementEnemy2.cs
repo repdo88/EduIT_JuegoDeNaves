@@ -24,6 +24,7 @@ public class MovementEnemy2 : MonoBehaviour
     private float xDirection; // Direction of movement in X axis
     [Header("Dead Settings")]
     public UnityEvent onDead; // Event to trigger when the enemy is dead
+    public UnityEvent onDestruction; // Event to trigger when the enemy is destroyed
     private bool isDead = false; // Flag to check if the enemy is dead
     [SerializeField] private string bulletLayer = "BulletPlayer"; // Name of the layer for enemies
     [SerializeField] private string playerLayer = "Player"; // Name of the layer for enemies
@@ -52,6 +53,8 @@ public class MovementEnemy2 : MonoBehaviour
     void Start()
     {
         onDead.AddListener(() => ScoreManager.instance.AddScore(killPoints)); // Add the AddScore method to the event listener
+        onDead.AddListener(() => AudioManager.instance.PlaySound("EnemyDestroy")); // Add the PlaySound method to the event listener
+        onDestruction.AddListener(() => AudioManager.instance.PlaySound("EnemyDestroy")); // Add the PlaySound method to the event listener
         onShoot.AddListener(() => AudioManager.instance.PlaySound("EnemyShoot")); // Add the PlaySound method to the event listener
         xDirection = Random.value < 0.5f ? -1f : 1f; // Randomly set the direction of movement in X axis
     }
@@ -96,6 +99,7 @@ public class MovementEnemy2 : MonoBehaviour
         else if (collider.gameObject.layer == LayerMask.NameToLayer(playerLayer))
         {
             Destroy(gameObject);
+            onDestruction.Invoke(); // Trigger the destruction event
             explode(); // Call the explode method to create explosion effect
 
         }

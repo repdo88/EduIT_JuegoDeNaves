@@ -2576,6 +2576,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onLifeLost:
+    m_PersistentCalls:
+      m_Calls: []
   life1: {fileID: 2132152287}
   life2: {fileID: 8473266}
 --- !u!1 &1818114184
@@ -2760,8 +2763,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 1881954712}
   playerShoot: {fileID: 8300000, guid: af884dc1e69241342b91e4a8d53ca4c5, type: 3}
-  playerDestroy: {fileID: 8300000, guid: 1ce7890406010c443a54576a00835e5a, type: 3}
-  enemyDestroy: {fileID: 8300000, guid: e8339afb63339ac4ea10a2885d245849, type: 3}
+  playerDestroy: {fileID: 8300000, guid: 8b91c3e204fb18f4592627564770aa49, type: 3}
+  enemyDestroy: {fileID: 8300000, guid: 0bb12225642cf9d4292efd249c31fc11, type: 3}
   enemyShoot:
   - {fileID: 8300000, guid: 90b633df358fb0f40bce2d8fb294aee7, type: 3}
   - {fileID: 8300000, guid: 897a55fdd342a224f8cc64b77b578a44, type: 3}
@@ -2816,7 +2819,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -3357,13 +3360,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f3b5326069ec7e549a5f513d19697ac4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 120
+  Priority: 180
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

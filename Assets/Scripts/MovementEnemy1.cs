@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class MovementEnemy1 : MonoBehaviour
 {
     public UnityEvent onShootRecive;
+    public UnityEvent onDead; // Event to trigger when the enemy is dead
     [SerializeField] private float speed = 20f; // Speed of the movement
     [SerializeField] private LayerMask layerMask; // Layer mask to check for collisions
     [SerializeField] private string bulletLayer = "BulletPlayer"; // Name of the layer for enemies
@@ -20,6 +22,7 @@ public class MovementEnemy1 : MonoBehaviour
     {
         // Fix: Wrap the method call in a lambda to pass it as a UnityAction
         onShootRecive.AddListener(() => ScoreManager.instance.AddScore(killPoints)); // Add the AddScore method to the event listener
+        onDead.AddListener(() => AudioManager.instance.PlaySound("EnemyDestroy")); // Add the PlaySound method to the event listener
     }
 
     // Update is called once per frame
@@ -36,6 +39,7 @@ public class MovementEnemy1 : MonoBehaviour
             isDead = true; // Set the enemy as dead
             //print("Enemy hit by bullet!"); // Debug message for enemy hit
             onShootRecive.Invoke(); // Invoca el evento al recibir un disparo
+            onDead.Invoke(); // Trigger the dead event
             explode(); // Call the explode method to create explosion effect
             Destroy(gameObject);
 
@@ -43,6 +47,7 @@ public class MovementEnemy1 : MonoBehaviour
         else if (collider.gameObject.layer == LayerMask.NameToLayer(playerLayer))
         {
             Destroy(gameObject);
+            onDead.Invoke(); // Trigger the dead event
             explode(); // Call the explode method to create explosion effect
 
         }
