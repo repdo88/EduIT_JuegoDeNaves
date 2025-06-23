@@ -16,8 +16,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText; // Reference to the UI text object for displaying score
     [SerializeField] private int levelTwoTime = 30; // Time limit for level two in seconds
     public UnityEvent onLevelTwo; // Event to trigger when the player reaches level two
+    public UnityEvent onLevelTwoWarning; // Event to trigger when the player is warned about reaching level two
 
-    
+
 
     private void Awake()
     {
@@ -56,6 +57,7 @@ public class ScoreManager : MonoBehaviour
             yield return new WaitForSeconds(1f); // Wait for 1 second
             timePlayed++; // Increase the time played by 1 second
             //Debug.Log("Time Played: " + timePlayed + " seconds"); // Log the time played
+            if (timePlayed == levelTwoTime - 3) { onLevelTwoWarning.Invoke(); } // Trigger the level two warning event when time played reaches 27 seconds
             if (timePlayed == levelTwoTime) { onLevelTwo.Invoke(); } // Trigger the level two event when time played reaches 30 seconds
         }
     }
