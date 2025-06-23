@@ -6,12 +6,19 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    [SerializeField] private AudioSource source;
+
+    [Header("Music")]
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioClip level1Music;
+    [SerializeField] private AudioClip level2Music;
     [Header("Sound Effects")]
+    [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip playerShoot;
     [SerializeField] private AudioClip playerDestroy;
     [SerializeField] private AudioClip enemyDestroy;
     [SerializeField] private AudioClip[] enemyShoot;
+
+
 
 
 
@@ -49,6 +56,12 @@ public class AudioManager : MonoBehaviour
                 Debug.LogWarning("Sound not found: " + sound);
                 break;
         }
+    }
+
+    public void MusicTwoLevel()
+    {
+        musicSource.clip = level2Music;
+        musicSource.Play();
     }
 
 }

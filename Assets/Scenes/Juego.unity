@@ -244,6 +244,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeText: {fileID: 1700306772}
   scoreText: {fileID: 916076858}
+  levelTwoTime: 30
+  onLevelTwo:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1223986025}
+        m_TargetAssemblyTypeName: EnemySpawmer, Assembly-CSharp
+        m_MethodName: IncreaseEnemySpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1223986025}
+        m_TargetAssemblyTypeName: EnemySpawmer, Assembly-CSharp
+        m_MethodName: IncreaseKillPoints
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1872520154}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: MusicTwoLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &93615705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1911,10 +1951,16 @@ MonoBehaviour:
   spawm1: {fileID: 767428540}
   spawm2: {fileID: 1284135689}
   enemy: {fileID: 3561297284280921869, guid: 6affcfb5870873840a00a2f1b824de23, type: 3}
-  enemy2: {fileID: 4974306542482230792, guid: b5347f4e33553a14397d1c400d19231d, type: 3}
+  speedEnemy1: 100
   spawnTime: 0.5
+  enemy1KillPoints: 1
+  enemy2: {fileID: 4974306542482230792, guid: b5347f4e33553a14397d1c400d19231d, type: 3}
+  speedEnemy2: 50
   spawnTime2: 2
   spawmDelay: 5
+  enemy2KillPoints: 3
+  speedMultiplier: 1.5
+  killPointsMultiplier: 2
 --- !u!4 &1223986026
 Transform:
   m_ObjectHideFlags: 0
@@ -2761,6 +2807,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c6af4e6b8d6e246b007fabd54a40ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSource: {fileID: 2073925906}
+  level1Music: {fileID: 8300000, guid: f3b5326069ec7e549a5f513d19697ac4, type: 3}
+  level2Music: {fileID: 8300000, guid: 6264e54cde1bdb342b93e82e0e74b586, type: 3}
   source: {fileID: 1881954712}
   playerShoot: {fileID: 8300000, guid: af884dc1e69241342b91e4a8d53ca4c5, type: 3}
   playerDestroy: {fileID: 8300000, guid: 8b91c3e204fb18f4592627564770aa49, type: 3}

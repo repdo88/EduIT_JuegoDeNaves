@@ -17,7 +17,7 @@ public class MovementEnemy2 : MonoBehaviour
     [Header("Collision Settings")]
     [SerializeField] LayerMask layerMask; // LayerMask to filter collisions
     [Header("Movement Settings")]
-    [SerializeField] private float speedZ = 100f; // Speed of the enemy movement
+    private float speedZ; // Speed of the enemy movement
     [SerializeField] private float speedX = 5f; // Speed of the enemy movement in X direction
     private float minX = -38f; // Minimum X position
     private float maxX = 41f; // Maximum X position
@@ -29,7 +29,7 @@ public class MovementEnemy2 : MonoBehaviour
     [SerializeField] private string bulletLayer = "BulletPlayer"; // Name of the layer for enemies
     [SerializeField] private string playerLayer = "Player"; // Name of the layer for enemies
     [SerializeField] private int lives = 2; // Number of lives for the enemy
-    [SerializeField] private int killPoints = 3; // Points to add to the score when the enemy is hit
+    private int killPoints; // Points to add to the score when the enemy is hit
     [SerializeField] private GameObject explosionPrefab; // Prefab for explosion effect
 
 
@@ -121,4 +121,15 @@ public class MovementEnemy2 : MonoBehaviour
             Destroy(explosion, ps.main.duration + ps.main.startLifetime.constantMax); // Destroy the explosion effect after 2 seconds
         }
     }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speedZ = newSpeed; // Set the speed of the enemy
+    }
+
+    public void SetKillPoints(int points)
+    {
+        killPoints = points; // Set the points to add to the score when the enemy is hit
+    }
+
 }

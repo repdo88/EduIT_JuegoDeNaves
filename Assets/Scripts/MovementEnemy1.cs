@@ -8,12 +8,12 @@ public class MovementEnemy1 : MonoBehaviour
 {
     public UnityEvent onShootRecive;
     public UnityEvent onDead; // Event to trigger when the enemy is dead
-    [SerializeField] private float speed = 20f; // Speed of the movement
+    private float speed; // Speed of the movement
     [SerializeField] private LayerMask layerMask; // Layer mask to check for collisions
     [SerializeField] private string bulletLayer = "BulletPlayer"; // Name of the layer for enemies
     [SerializeField] private string playerLayer = "Player"; // Name of the layer for enemies
     private bool isDead = false; // Flag to check if the enemy is dead
-    [SerializeField] private int killPoints = 1; // Points to add to the score when the enemy is hit
+    private int killPoints; // Points to add to the score when the enemy is hit
     [SerializeField] private GameObject explosionPrefab; // Prefab for explosion effect
 
 
@@ -70,5 +70,14 @@ public class MovementEnemy1 : MonoBehaviour
         }
     }
 
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed; // Set the speed of the enemy
+    }
+
+    public void SetKillPoints(int points)
+    {
+        killPoints = points; // Set the points to add to the score when the enemy is hit
+    }
 
 }

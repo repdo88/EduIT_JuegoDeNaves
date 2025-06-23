@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 using static ReadScores;
+using UnityEngine.Events;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class ScoreManager : MonoBehaviour
     private bool isAlive = true; // Flag to check if the game is active
     [SerializeField] private TextMeshProUGUI timeText; // Reference to the UI text object for displaying time played
     [SerializeField] private TextMeshProUGUI scoreText; // Reference to the UI text object for displaying score
+    [SerializeField] private int levelTwoTime = 30; // Time limit for level two in seconds
+    public UnityEvent onLevelTwo; // Event to trigger when the player reaches level two
+
+    
 
     private void Awake()
     {
@@ -28,6 +33,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
+        
         StartCoroutine(CountingTime()); // Start the coroutine to count time played
     }
 
@@ -50,6 +56,7 @@ public class ScoreManager : MonoBehaviour
             yield return new WaitForSeconds(1f); // Wait for 1 second
             timePlayed++; // Increase the time played by 1 second
             //Debug.Log("Time Played: " + timePlayed + " seconds"); // Log the time played
+            if (timePlayed == levelTwoTime) { onLevelTwo.Invoke(); } // Trigger the level two event when time played reaches 30 seconds
         }
     }
 
